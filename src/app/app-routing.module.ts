@@ -5,6 +5,9 @@ import { HomeComponent } from './shared/components/home/home.component';
 const routes: Routes = [{
   path: '',
   component: HomeComponent
+}, {
+  path: 'videos',
+  loadChildren: './videos/videos.module#VideosModule'
 }];
 
 @NgModule({
