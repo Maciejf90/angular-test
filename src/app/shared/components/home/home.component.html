@@ -1,0 +1,13 @@
+<p *ngIf="show" (click)="onHide()">
+  now is: {{ title }}
+
+  {{ data | json}}
+
+</p>
+
+<div [style.color]="red" (click)="onDivClick()" >
+  styles attribute
+</div>
+
+
+<app-map [coords]="title" (mapClick)="onMapClick($event)" ></app-map>
