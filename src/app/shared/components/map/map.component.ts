@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-map',
@@ -14,7 +15,9 @@ export class MapComponent implements OnInit {
   @Output()
   mapClick = new EventEmitter();
 
-  constructor() { }
+  constructor(private userService: UserService) {
+    console.log('USER', userService);
+   }
 
   ngOnInit() {
     this.mapClick.emit('nasz event');
