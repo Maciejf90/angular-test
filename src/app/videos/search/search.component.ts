@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SearchService, YoutubeResponse } from '../search.service';
 import { Observable, Subscription, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Playlist, Video, User } from 'src/app/models';
+import { Playlist, Video, User, FavoriteVideo } from 'src/app/models';
+import { VideoService } from '../services/video.service';
 // import { Playlist } from 'src/app/models/music.model';
 // import { Video } from 'src/app/models/video.model';
 
@@ -24,13 +25,31 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   destroy$ = new Subject();
 
+  favorites$: Observable<FavoriteVideo[]>;
+
   private searchService: SearchService;
 
-  constructor(searchService: SearchService) {
+  constructor(searchService: SearchService, private videoService: VideoService) {
     this.searchService = searchService;
   }
 
   ngOnInit() {
+    this.videoService.loadFavorites().subscribe(v=>console.log('V',v));
+    this.favorites$ = this.videoService.getFavorites();
+  }
+
+  addFavorite(video: Video) {
+    this.videoService.addFavorite(video).subscribe(
+      v => console.log('V', v),
+      err => console.log('err', err)
+    );
+  }
+
+  deleteFavorite(fv: FavoriteVideo) {
+    this.videoService.deleteFavorite(fv.video).subscribe(
+      v => console.log('V', v),
+      err => console.log('err', err)
+    );
   }
 
   onSearch() {
@@ -53,13 +72,13 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('DESTROY');
-    this.destroy$.next(1);
-  }
-
-}
-
-
+favoriteVideo
+favoriteVideo
+favoriteVideo
+favoriteVideo
+favoriteVideo
+favoriteVideo
+favoriteVideo
 // const playlista: Playlist = {
 //   id: 4,
 //   name: 'name'

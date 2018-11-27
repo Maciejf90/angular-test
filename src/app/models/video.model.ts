@@ -23,6 +23,10 @@ export interface Thumbnail {
   height: number;
 }
 
+export interface FavoriteVideo {
+  id: string;
+  video: Video;
+}
 
 // {
 //   "kind": "youtube#searchResult",

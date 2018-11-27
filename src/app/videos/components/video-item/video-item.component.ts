@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Video } from 'src/app/models';
 import { MatDialog } from '@angular/material';
 import { VideoDialogComponent, VideoDialogData } from '../../dialogs/video-dialog/video-dialog.component';
+import { VideoService } from '../../services/video.service';
 
 @Component({
   selector: 'app-video-item',
@@ -20,6 +21,7 @@ export class VideoItemComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
   showDialog() {
     console.log('SHOW');

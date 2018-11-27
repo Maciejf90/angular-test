@@ -12,9 +12,10 @@
 
     <app-video-item *ngFor="let video of videos" [video]="video" [videos]="videos">
 
-        <a href="#" class="btn btn-primary">favorite</a>
-        <a href="#" appVideoTop class="btn btn-warning">DELETE</a>
-        <a href="#" appVideoRight class="btn btn-info ">EDIT</a>
+        <button class="btn btn-primary" (click)="addFavorite(video)">favorite</button>
+
+        <!-- <a href="#" appVideoTop class="btn btn-warning">DELETE</a>
+        <a href="#" appVideoRight class="btn btn-info ">EDIT</a> -->
 
     </app-video-item>
   </div>
@@ -27,8 +28,10 @@
   </p>
 </ng-template>
 
-
-
+<h2>Favorites videos</h2>
+<div *ngFor="let favoriteVideo of favorites$ | async">
+{{favoriteVideo.id}} - {{favoriteVideo.video.snippet.title}} <span class="btn btn-text" (click)="deleteFavorite(favoriteVideo)">remove</span>
+</div>
 
 <!-- <p (click)="showList = !showList">
   Szukam: {{query}}
