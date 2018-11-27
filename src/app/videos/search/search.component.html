@@ -10,7 +10,7 @@
 
   <div class="card-group">
 
-    <app-video-item *ngFor="let video of videos" [video]="video">
+    <app-video-item *ngFor="let video of videos" [video]="video" [videos]="videos">
 
         <a href="#" class="btn btn-primary">favorite</a>
         <a href="#" appVideoTop class="btn btn-warning">DELETE</a>

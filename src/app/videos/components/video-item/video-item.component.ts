@@ -13,6 +13,9 @@ export class VideoItemComponent implements OnInit {
   @Input()
   video: Video;
 
+  @Input()
+  videos: Video[];
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -21,7 +24,8 @@ export class VideoItemComponent implements OnInit {
   showDialog() {
     console.log('SHOW');
     const data: VideoDialogData = {
-      video: this.video
+      video: this.video,
+      videos: this.videos
     };
     const dialogRef = this.dialog.open(VideoDialogComponent, {
       data

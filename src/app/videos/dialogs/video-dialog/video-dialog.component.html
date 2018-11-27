@@ -1,3 +1,10 @@
-<p>
-  video-dialog works!
-</p>
+<iframe width="560" height="315" [src]="url" frameborder="0" allowfullscreen></iframe>
+<div>
+
+  <button class="btn btn-default" (click)="onClose()">Close</button>
+
+  <button class="btn btn-default prev" (click)="onPrev()">prev</button>
+  <button class="btn btn-default next" (click)="onNext()">next</button>
+
+  <button class="btn btn-default pull-right" (click)="onClose()">favorite</button>
+</div>
