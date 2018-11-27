@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Video } from 'src/app/models';
+import { MatDialog } from '@angular/material';
+import { VideoDialogComponent, VideoDialogData } from '../../dialogs/video-dialog/video-dialog.component';
 
 @Component({
   selector: 'app-video-item',
@@ -10,9 +12,23 @@ export class VideoItemComponent implements OnInit {
 
   @Input()
   video: Video;
-  constructor() { }
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  showDialog() {
+    console.log('SHOW');
+    const data: VideoDialogData = {
+      video: this.video
+    };
+    const dialogRef = this.dialog.open(VideoDialogComponent, {
+      data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+    });
+  }
 }

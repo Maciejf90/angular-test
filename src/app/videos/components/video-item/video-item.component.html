@@ -1,5 +1,5 @@
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" [src]="video.snippet.thumbnails.medium.url" [alt]="video.snippet.title+' - YouTube'">
+  <img (click)="showDialog()" class="card-img-top" [src]="video.snippet.thumbnails.medium.url" [alt]="video.snippet.title+' - YouTube'">
   <div class="card-body">
     <h5 class="card-title"> {{ video.snippet.title}} </h5>
     <p class="card-text">{{ video.snippet.description}} </p>
