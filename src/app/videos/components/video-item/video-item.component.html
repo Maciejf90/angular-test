@@ -1,0 +1,19 @@
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" [src]="video.snippet.thumbnails.medium.url" [alt]="video.snippet.title+' - YouTube'">
+  <div class="card-body">
+    <h5 class="card-title"> {{ video.snippet.title}} </h5>
+    <p class="card-text">{{ video.snippet.description}} </p>
+    <p class="card-text"><small class="text-muted">{{video.snippet.channelTitle}}</small></p>
+
+
+    <ng-content></ng-content>
+
+    <div class="right">
+        <ng-content select="[appVideoRight]"></ng-content>
+    </div>
+    <div class="top">
+      <ng-content select="[appVideoTop]"></ng-content>
+    </div>
+
+  </div>
+</div>

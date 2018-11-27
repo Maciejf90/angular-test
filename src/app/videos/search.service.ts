@@ -22,7 +22,7 @@ export class SearchService {
     @Inject(YOUTUBE_API_KEY) private key: string
   ) { }
 
-  searchYoutube(query: string): Observable<Video[]> {
+  searchYoutube(query: string, page = 1): Observable<Video[]> {
 
     console.log('search', query);
 

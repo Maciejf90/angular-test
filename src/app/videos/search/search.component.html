@@ -1,15 +1,22 @@
-
 <form class="form-inline" (ngSubmit)="onSearch()" #searchForm="ngForm">
   <div class="form-group mx-sm-3">
-    <input [ngModel]="query" (ngModelChange)="query = $event" required  name="query" type="text" class="form-control" placeholder="Szukaj na youtube">
+    <input [ngModel]="query" (ngModelChange)="query = $event" required name="query" type="text" class="form-control"
+      placeholder="Szukaj na youtube">
   </div>
-  <button type="submit" class="btn btn-primary"  [disabled]="!searchForm.form.valid">Szukaj</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!searchForm.form.valid">Szukaj</button>
 </form>
 
 <ng-container *ngIf="response$ | async as videos; else elseTemplate">
 
-  <div *ngFor="let video of videos">
-    {{video.id.videoId}}
+  <div class="card-group">
+
+    <app-video-item *ngFor="let video of videos" [video]="video" edit="true" favorite="true" (onFavortieClick)="obsluga()">
+
+        <a href="#" class="btn btn-primary">Add to favorite</a>
+        <a href="#" appVideoTop class="btn btn-warning">DELETE</a>
+        <a href="#" appVideoRight class="btn btn-info ">EDIT</a>
+
+    </app-video-item>
   </div>
 
 </ng-container>
