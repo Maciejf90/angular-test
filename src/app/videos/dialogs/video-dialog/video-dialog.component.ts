@@ -24,9 +24,12 @@ export class VideoDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.setVideo(this.data.video);
+  }
 
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.data.video.id.videoId);
-
+  setVideo(video) {
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video.id.videoId);
+    this.data.video = video;
   }
 
   onClose(): void {
@@ -35,11 +38,18 @@ export class VideoDialogComponent implements OnInit {
 
   onPrev(): void {
 
-    console.log('index of prev', this.data.videos.indexOf(this.data.video)):
-
+    const index = this.data.videos.indexOf(this.data.video);
+    const video = this.data.videos[index - 1];
+    if (video) {
+      this.setVideo(video);
+    }
   }
   onNext(): void {
-    console.log('index of next', this.data.videos.indexOf(this.data.video)):
 
+    const index = this.data.videos.indexOf(this.data.video);
+    const video = this.data.videos[index + 1];
+    if (video) {
+      this.setVideo(video);
+    }
   }
 }
