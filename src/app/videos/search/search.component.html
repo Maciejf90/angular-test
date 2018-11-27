@@ -10,9 +10,9 @@
 
   <div class="card-group">
 
-    <app-video-item *ngFor="let video of videos" [video]="video" edit="true" favorite="true" (onFavortieClick)="obsluga()">
+    <app-video-item *ngFor="let video of videos" [video]="video">
 
-        <a href="#" class="btn btn-primary">Add to favorite</a>
+        <a href="#" class="btn btn-primary">favorite</a>
         <a href="#" appVideoTop class="btn btn-warning">DELETE</a>
         <a href="#" appVideoRight class="btn btn-info ">EDIT</a>
 
