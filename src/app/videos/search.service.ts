@@ -8,9 +8,8 @@ import { YOUTUBE_API_KEY } from '../shared/tokens';
 import { Video } from '../models';
 
 export interface YoutubeResponse {
-  items: any[];
+  items: Video[];
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -29,16 +28,17 @@ export class SearchService {
 
     const endpoint = 'https://www.googleapis.com/youtube/v3/search';
 
-    return this.http.get(endpoint, {
+    return this.http.get<YoutubeResponse>(endpoint, {
       params: {
         q: query,
         part: 'snippet',
         key: this.key
       }
     }).pipe(
-      map((res: any) => {
+      map((res) => {
         return res.items;
-      })
+      }),
+      delay(100)
     );
 
   }

@@ -5,14 +5,32 @@
   </div>
   <button type="submit" class="btn btn-primary"  [disabled]="!searchForm.form.valid">Szukaj</button>
 </form>
-<p (click)="showList = !showList">
-  Szukam: {{query}}
-</p>
-<pre >
-  OBSERVABLE:
-  {{response$ | async  | json}}
 
-</pre>
+<ng-container *ngIf="response$ | async as videos; else elseTemplate">
+
+  <div *ngFor="let video of videos">
+    {{video.id.videoId}}
+  </div>
+
+</ng-container>
+
+<ng-template #elseTemplate>
+  <p>
+    Searching youtube for <b>{{query}}</b>...
+  </p>
+</ng-template>
+
+
+
+
+<!-- <p (click)="showList = !showList">
+  Szukam: {{query}}
+</p> -->
+<!-- <pre >
+  OBSERVABLE:
+  {{(response$ | async ).[0].name}}
+  {{(response$ | async ).[0].surname}}
+</pre> -->
 
 <!-- <img src="{{video | thumb:'small'}}" alt=""> -->
 

@@ -19,7 +19,7 @@ import { Playlist, Video, User } from 'src/app/models';
 export class SearchComponent implements OnInit, OnDestroy {
 
   query: string;
-  response$: Observable<YoutubeResponse>;
+  response$: Observable<Video[]>;
   response: YoutubeResponse;
 
   destroy$ = new Subject();
