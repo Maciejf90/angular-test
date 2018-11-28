@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.videoService.loadFavorites().subscribe(v=>console.log('V',v));
+    this.videoService.loadFavorites().subscribe(v => console.log('V', v));
     this.favorites$ = this.videoService.getFavorites();
   }
 
@@ -72,13 +72,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-favoriteVideo
-favoriteVideo
-favoriteVideo
-favoriteVideo
-favoriteVideo
-favoriteVideo
-favoriteVideo
+
+  }
 // const playlista: Playlist = {
 //   id: 4,
 //   name: 'name'
