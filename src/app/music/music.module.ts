@@ -6,12 +6,14 @@ import { ArtistComponent } from './artist/artist.component';
 import { ArtistViewComponent } from './artist-view/artist-view.component';
 import { ArtistEditComponent } from './artist-edit/artist-edit.component';
 import { ArtistProfileComponent } from './components/artist-profile/artist-profile.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ArtistComponent, ArtistViewComponent, ArtistEditComponent, ArtistProfileComponent],
   imports: [
     CommonModule,
-    MusicRoutingModule
+    MusicRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class MusicModule { }

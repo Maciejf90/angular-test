@@ -1,3 +1,34 @@
-<pre>
-{{artist$ | async | json}}
-</pre>
+<ng-container *ngIf="!isEdit">
+
+  <button class="btn btn-primary" (click)="isEdit = true">edit</button>
+  <pre>
+  {{artist$ | async | json}}
+  </pre>
+</ng-container>
+
+<ng-container *ngIf="isEdit">
+
+  <button class="btn btn-default" (click)="isEdit = false">cancel</button>
+
+  <form [formGroup]="artistForm">
+
+    <input type="hidden" formControlName="id">
+
+    <label>
+      Name:
+      <input type="text" formControlName="name">
+    </label>
+
+    <label>
+      Image:
+      <input type="text" formControlName="img">
+    </label>
+
+    <button class="btn btn-primary" (click)="save()">SAVE</button>
+  </form>
+
+</ng-container>
+
+<div *ngFor="let artist of artists$ | async">
+    <a [routerLink]="['view', artist.id]" routerLinkActive="active">{{artist.name}}</a>
+</div>

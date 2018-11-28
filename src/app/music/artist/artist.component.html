@@ -8,8 +8,8 @@
   <div class="row">
     <div class="col col-lg-2">
 
-      <div *ngIf="artists$ | async as artists; else loading" class="card-group">
-        <div *ngFor="let artist of artists$ | async">
+      <div *ngIf="artists$ | async as artists; else loading" class="card-group--">
+        <div *ngFor="let artist of artists">
             <a [routerLink]="['view', artist.id]" routerLinkActive="active">{{artist.name}}</a>
           <!-- <app-artist-profile [artist]="artist">
             <a class="btn btn-primary" [routerLink]="['artist', artist.id]">Show Songs</a>
