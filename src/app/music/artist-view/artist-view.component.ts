@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Artist } from 'src/app/models';
-import { Observable } from 'rxjs';
-import { map, switchMap, distinctUntilChanged, delay, tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, switchMap, distinctUntilChanged, delay, tap, takeUntil } from 'rxjs/operators';
 import { ArtistService } from '../services/artist.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -11,13 +11,14 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './artist-view.component.html',
   styleUrls: ['./artist-view.component.scss']
 })
-export class ArtistViewComponent implements OnInit {
+export class ArtistViewComponent implements OnInit, OnDestroy {
 
   isEdit = false;
 
   public artist$: Observable<Artist>;
   public artists$: Observable<Artist[]>;
 
+  destroy$ = new Subject();
   artistForm: FormGroup;
 
   constructor(private route: ActivatedRoute, private artistService: ArtistService) { }
@@ -50,10 +51,15 @@ export class ArtistViewComponent implements OnInit {
 
   save() {
     console.log('save', this.artistForm.value);
-    this.artistService.updateArtist(this.artistForm.value).subscribe(
+    this.artistService.updateArtist(this.artistForm.value).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(
       s => console.log('S', s),
       err => console.log('err', err)
     );
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(1);
+  }
 }
