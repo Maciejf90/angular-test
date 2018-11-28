@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { Coords } from 'src/app/models';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,8 @@ export class HomeComponent implements OnInit {
 
   red = 'red';
 
+  public coords: Coords;
+
   title = 0;
   data = {
     text: 'title',
@@ -26,18 +29,19 @@ export class HomeComponent implements OnInit {
 
     const teraz = this.title || 'alterantywa';
 
-    setInterval(() => {
-      this.title = Date.now();
-    }, 1000);
+    // setInterval(() => {
+    //   this.title = Date.now();
+    // }, 1000);
   }
 
   onDivClick() {
     this.red = 'green';
-    console.log('ON CLICK')
+    console.log('ON CLICK');
   }
 
   onMapClick(event) {
-    console.log('MAP CLICK', event)
+    console.log('MAP CLICK', event);
+    this.coords = event;
   }
 
   onHide() {
