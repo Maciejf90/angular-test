@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ArtistService } from '../services/artist.service';
+import { Artist } from 'src/app/models';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-artist',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArtistComponent implements OnInit {
 
-  constructor() { }
+  artists$: Observable<Artist[]>;
+
+  constructor(private artistService: ArtistService) { }
 
   ngOnInit() {
+    this.artists$ = this.artistService.getArtists();
   }
 
 }

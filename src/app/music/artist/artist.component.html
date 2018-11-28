@@ -1,9 +1,29 @@
-<p>
-  <a [routerLink]="['view', 1]">artist 1</a><br>
-  <a [routerLink]="['view', 2]">artist 2</a><br><br>
-  <a [routerLink]="['../artist']">artist 2</a><br><br>
+
+<div class="container">
+  <!-- <form>
+    <input class="form-controll" name="name" [(ngModel)]="query" />
+    <button (click)="search()">search</button>
+  </form> -->
+
+  <div class="row">
+    <div class="col col-lg-2">
+
+      <div *ngIf="artists$ | async as artists; else loading" class="card-group">
+        <div *ngFor="let artist of artists$ | async">
+            <a [routerLink]="['view', artist.id]" routerLinkActive="active">{{artist.name}}</a>
+          <!-- <app-artist-profile [artist]="artist">
+            <a class="btn btn-primary" [routerLink]="['artist', artist.id]">Show Songs</a>
+          </app-artist-profile> -->
+        </div>
+      </div>
+      <ng-template #loading >Waiting...</ng-template>
 
 
-</p>
+    </div>
 
-<router-outlet></router-outlet>
+    <div class="col-sm">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>
