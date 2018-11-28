@@ -5,13 +5,19 @@ import { HomeComponent } from './components/home/home.component';
 import { MapComponent } from './components/map/map.component';
 import { RouterModule } from '@angular/router';
 import { RxjsComponent } from './components/rxjs/rxjs.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { UnlessDirective } from './directives/unless.directive';
+import { ImageUrlPipe } from './pipes/image-url.pipe';
 
 @NgModule({
   declarations: [
     MenuComponent,
     HomeComponent,
     MapComponent,
-    RxjsComponent
+    RxjsComponent,
+    HighlightDirective,
+    UnlessDirective,
+    ImageUrlPipe
   ],
   imports: [
     CommonModule,
@@ -20,7 +26,9 @@ import { RxjsComponent } from './components/rxjs/rxjs.component';
   exports: [
     MenuComponent,
     HomeComponent,
-    MapComponent
+    MapComponent,
+    HighlightDirective,
+    UnlessDirective
   ]
 })
 export class SharedModule { }

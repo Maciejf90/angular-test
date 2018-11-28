@@ -5,11 +5,37 @@
 
 </p>
 
-<div [style.color]="red" (click)="onDivClick()" >
+<p appHighlight>
+  test dyrektywy highlingt
+</p>
+<p appHighlight="red" appHighlightDecoration="none">
+  test dyrektywy highlingt
+</p>
+
+<h2>unless na true</h2>
+<p *appUnless="true">
+  test dyrektywy appUnless na true
+</p>
+
+<h2>unless na false</h2>
+<ng-template [appUnless]="false">
+  <p>
+    test dyrektywy appUnless na false
+  </p>
+</ng-template>
+<!-- container -->
+
+<div [style.color]="red" (click)="onDivClick()">
   styles attribute
 </div>
 
+<p>
+  ImageUrl pipe: {{ 'user-avatar.jpg' | imageUrl }}<br>
+  ImageUrl pipe: {{ 'user-avatar.jpg' | imageUrl:'/assets/images/' }}<br>
+  ImageUrl pipe: {{ 'user-avatar.jpg' | imageUrl:'/assets/images/':55 }}
+</p>
 
-<!-- <app-map [coords]="coords" (mapClick)="onMapClick($event)" ></app-map> -->
+
+<!-- <app-map [coords]="coords" (mapClick)="onMapClick($event)"></app-map> -->
 
 <!-- <app-map [coords]="coords2" (mapClick)="coords2 = $event" ></app-map> -->
