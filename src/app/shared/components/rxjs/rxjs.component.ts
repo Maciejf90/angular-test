@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, timer, interval, Subject } from 'rxjs';
-import { share, buffer, bufferCount, take, switchMap, tap, exhaustMap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { share, buffer, bufferCount, take, switchMap, tap, exhaustMap, distinctUntilChanged, debounceTime, delay } from 'rxjs/operators';
 
 const myPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
@@ -76,13 +76,13 @@ const buffer$ = mouseMoves$.pipe(
 // buffer$.subscribe(v => console.log('buffer', v));
 
 // switch map
-
 const click$ = new Subject();
 
 const messages$ = interval(500).pipe(take(6));
 
 const data$ = click$.pipe(
   debounceTime(1000),
+  delay(300),
   // distinctUntilChanged(),
   switchMap((n) => {
     console.log('n', n);
