@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   red = 'red';
 
   public coords: Coords;
+  public coords2: Coords;
 
   title = 0;
   data = {
