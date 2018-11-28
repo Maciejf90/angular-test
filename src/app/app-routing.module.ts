@@ -8,6 +8,9 @@ const routes: Routes = [{
 }, {
   path: 'videos',
   loadChildren: './videos/videos.module#VideosModule'
+}, {
+  path: 'music',
+  loadChildren: './music/music.module#MusicModule'
 }];
 
 @NgModule({

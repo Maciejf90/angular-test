@@ -74,6 +74,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
 
   }
+}
 // const playlista: Playlist = {
 //   id: 4,
 //   name: 'name'
