@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand navbar-light bg-light">
   <a class="navbar-brand" href="#">AngularApp</a>
   <ul class="navbar-nav">
-    <li class="nav-item" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       <a class="nav-link" routerLink="">Home</a>
     </li>
     <li class="nav-item" routerLinkActive="active">
@@ -15,6 +15,16 @@
     </li>
   </ul>
   <ul class="navbar-nav ml-auto">
+
+
+    <li class="nav-item">
+      <a class="nav-link" *ngIf="userService.idleTime$ | async as time">
+        idle time: <b>{{time}}s</b>
+        <span *ngIf="time < 3" (click)="userService.refreshButtonClick$.next()">REFRESH</span>
+      </a>
+    </li>
+
+
     <li class="nav">
 
       <ng-container *ngIf="userService.user$ | async as user; else elseTemplate">
@@ -25,7 +35,7 @@
           [logout]
         </button>
 
-        <button class="nav-link" *appHasRole="['admin']" >
+        <button class="nav-link" *appHasRole="['admin']">
           [admin]
         </button>
 
