@@ -16,7 +16,25 @@
   </ul>
   <ul class="navbar-nav ml-auto">
     <li class="nav">
-      <button class="btn btn-default nav-link" appAuth>Login</button>
+
+      <ng-container *ngIf="userService.user$ | async as user; else elseTemplate">
+        <span class="nav-link">
+          {{user.name}}
+        </span>
+        <button class="nav-link" (click)="userService.logout().subscribe()">
+          [logout]
+        </button>
+
+        <button class="nav-link" appHasRole="['admin']" >
+          [admin]
+        </button>
+
+      </ng-container>
+
+      <ng-template #elseTemplate>
+        <button class="nav-link" appAuth>Login</button>
+      </ng-template>
+
     </li>
   </ul>
 
