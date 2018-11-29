@@ -54,7 +54,7 @@ export class HasRoleDirective implements OnDestroy, OnInit {
       )
       .subscribe(
         ([roles, user]) => {
-          console.log('subscribe', roles, user);
+          // console.log('subscribe', roles, user);
           if (user && roles.includes(user.role)) {
             this.setView();
           } else {

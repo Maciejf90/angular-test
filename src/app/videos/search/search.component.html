@@ -6,6 +6,8 @@
   <button type="submit" class="btn btn-primary" [disabled]="!searchForm.form.valid">Szukaj</button>
 </form>
 
+<a class="btn btn-primary" [routerLink]="['../list']">Favoritie Videos</a>
+
 <ng-container *ngIf="response$ | async as videos; else elseTemplate">
 
   <div class="card-group">
