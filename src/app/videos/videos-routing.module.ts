@@ -10,10 +10,7 @@ const routes: Routes = [{
   redirectTo: 'search'
 }, {
   path: 'search',
-  component: SearchComponent,
-  resolve: {
-    customData: CustomDataResolverService
-  }
+  component: SearchComponent
 }, {
   path: 'list',
   component: ListComponent,
