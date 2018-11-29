@@ -33,7 +33,6 @@ export class MapComponent implements OnInit, OnChanges {
   mapClick = new EventEmitter<Coords>();
 
   constructor(private userService: UserService) {
-    console.log('USER', userService);
   }
 
   ngOnInit() {
@@ -48,7 +47,6 @@ export class MapComponent implements OnInit, OnChanges {
 
 
     map.on('click', (e: L.LeafletMouseEvent) => {
-      console.log('leaflet', e);
       this.mapClick.next(e.latlng);
     });
 
@@ -67,32 +65,32 @@ export class MapComponent implements OnInit, OnChanges {
 
 
 
-class MapaVJava {
-  private map;
-  getMap() {
-    return this.map;
-  }
-}
+// class MapaVJava {
+//   private map;
+//   getMap() {
+//     return this.map;
+//   }
+// }
 
-class MapaV1 {
-  public map;
-}
+// class MapaV1 {
+//   public map;
+// }
 
-class Mapa {
+// class Mapa {
 
-  private _map;
+//   private _map;
 
-  set map(m) {
-    console.log('set', m);
-    this._map = m;
-  }
-  get map() {
-    console.log('get', this._map);
-    return this._map;
-  }
-}
+//   set map(m) {
+//     console.log('set', m);
+//     this._map = m;
+//   }
+//   get map() {
+//     console.log('get', this._map);
+//     return this._map;
+//   }
+// }
 
-const instancjaMapy = new Mapa();
+// const instancjaMapy = new Mapa();
 
-instancjaMapy.map = 'leaflet';
-console.log('get map property', instancjaMapy.map);
+// instancjaMapy.map = 'leaflet';
+// console.log('get map property', instancjaMapy.map);

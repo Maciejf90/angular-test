@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, timer, interval, Subject } from 'rxjs';
 import { share, buffer, bufferCount, take, switchMap, tap, exhaustMap, distinctUntilChanged, debounceTime, delay } from 'rxjs/operators';
 
-const myPromise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    console.log('fire promise resolve');
-    resolve('resolve promise after 1s');
-  }, 1000);
+// const myPromise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     console.log('fire promise resolve');
+//     resolve('resolve promise after 1s');
+//   }, 1000);
 
   // on error
   // reject('my error instance here');
-});
+// });
 // of(1);
 const of1$ = Observable.create(observer => {
   observer.next(1);

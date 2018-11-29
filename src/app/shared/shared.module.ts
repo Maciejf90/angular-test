@@ -8,6 +8,10 @@ import { RxjsComponent } from './components/rxjs/rxjs.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
 import { ImageUrlPipe } from './pipes/image-url.pipe';
+import { AuthDialogComponent } from './dialogs/auth-dialog/auth-dialog.component';
+import { AuthDirective } from './directives/auth.directive';
+import { MatDialog, MatDialogModule, MatFormFieldModule, MatInputModule, MatButton, MatButtonModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,18 +21,33 @@ import { ImageUrlPipe } from './pipes/image-url.pipe';
     RxjsComponent,
     HighlightDirective,
     UnlessDirective,
-    ImageUrlPipe
+    ImageUrlPipe,
+    AuthDialogComponent,
+    AuthDirective
   ],
+  entryComponents: [AuthDialogComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
     MenuComponent,
     HomeComponent,
     MapComponent,
     HighlightDirective,
-    UnlessDirective
+    UnlessDirective,
+    AuthDialogComponent,
+
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class SharedModule { }

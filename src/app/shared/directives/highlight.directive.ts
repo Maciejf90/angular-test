@@ -19,7 +19,7 @@ export class HighlightDirective {
 
   @HostListener('click')
   onmouseover() {
-    console.log('over', this.appHighlight, this.appHighlightDecoration);
+    // console.log('over', this.appHighlight, this.appHighlightDecoration);
     this.decoration = 'underline';
 
     this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', 'yellow');
@@ -27,7 +27,7 @@ export class HighlightDirective {
 
   @HostListener('mouseout')
   onmouseout() {
-    console.log('out');
+    // console.log('out');
     this.decoration = '';
     this.renderer.setElementStyle(this.el.nativeElement, 'backgroundColor', '');
   }

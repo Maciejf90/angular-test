@@ -10,7 +10,7 @@ export class ImageUrlPipe implements PipeTransform {
 
   }
   transform(value: any, customBaseUrl?: any, customArg?: any): any {
-    console.log('transform image url', value, customBaseUrl, customArg);
+    // console.log('transform image url', value, customBaseUrl, customArg);
     if (customBaseUrl) {
       return customBaseUrl + value;
     } else {

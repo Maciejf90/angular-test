@@ -11,6 +11,14 @@ import { tap, startWith, switchMap, share } from 'rxjs/operators';
 })
 export class ArtistService {
 
+  // private _baseUrl2: string;
+  // get baseUrl2() {
+  //   if (!this._baseUrl2) {
+  //     this._bseUrl2 = this.injector.get(BASE_URL);
+  //   }
+  //   return this._baseUrl2;
+  // }
+
   reload$ = new Subject();
 
   getArtists$ = this.http.get<Artist[]>(this.baseUrl + '/artists').pipe(share());
@@ -18,6 +26,8 @@ export class ArtistService {
   constructor(private http: HttpClient, @Inject(BASE_URL) private baseUrl: string) { }
 
   getArtists(): Observable<Artist[]> {
+
+    // console.log(this.baseUrl2)
 
     return merge(
       this.reload$,
