@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { of } from 'rxjs';
 import { MatDialog } from '@angular/material';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, share, take } from 'rxjs/operators';
 import { AuthDialogComponent } from '../dialogs/auth-dialog/auth-dialog.component';
 
 @Injectable({
@@ -25,7 +25,9 @@ export class AuthService {
       } else {
         return of(user);
       }
-    })
+    }),
+    share(),
+    take(1)
   );
 }
 // switchMap(user => {
