@@ -34,21 +34,3 @@ export class UserGuard implements CanActivate {
 
   }
 }
-
-
-
-
-// return this.loginService.loginDialog().pipe(
-//   take(1),
-//   map(user => {
-//     console.log('USER GUARD', user);
-
-//     if (next.data.roles && user && next.data.roles.indexOf(user.role) >= 0) {
-//       return true;
-//     } else {
-//       this.router.navigate(['/error/forbidden']);
-//       return false;
-//     }
-//   }),
-//   map(u => !!u)
-// );
