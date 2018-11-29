@@ -19,7 +19,23 @@ export class UserService {
   constructor(
     @Inject(BASE_URL) private baseUrl,
     private http: HttpClient
-  ) { }
+  ) {
+
+    // get user from session
+    const userFromStorage = localStorage.getItem('user');
+    if (userFromStorage) {
+      try {
+        this._user$.next(JSON.parse(userFromStorage));
+      } catch (error) {
+        console.log('ERROR parsowania', error);
+      }
+    }
+    // update user in session
+    this._user$.subscribe(user => {
+      localStorage.setItem('user', JSON.stringify(user));
+    });
+
+  }
 
   logout(): Observable<null> {
     return Observable.create(observer => {
@@ -27,7 +43,7 @@ export class UserService {
       observer.next(null);
       observer.complete();
 
-      return () => {};
+      return () => { };
     });
   }
 
