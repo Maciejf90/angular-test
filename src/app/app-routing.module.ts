@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './shared/components/home/home.component';
 import { RxjsComponent } from './shared/components/rxjs/rxjs.component';
+import { ErrorComponent } from './shared/error/error.component';
 
 const routes: Routes = [{
   path: '',
@@ -9,6 +10,9 @@ const routes: Routes = [{
 }, {
   path: 'rxjs',
   component: RxjsComponent
+}, {
+  path: 'error/:type',
+  component: ErrorComponent
 }, {
   path: 'videos',
   loadChildren: './videos/videos.module#VideosModule'
