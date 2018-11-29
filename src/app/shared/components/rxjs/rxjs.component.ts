@@ -84,7 +84,7 @@ const data$ = click$.pipe(
   debounceTime(1000),
   delay(300),
   // distinctUntilChanged(),
-  switchMap((n) => {
+  switchMap((n) => {action2
     console.log('n', n);
     return messages$;
   }),
@@ -101,12 +101,14 @@ data$.subscribe(v => console.log('data', v));
 })
 export class RxjsComponent {
 
+  roles = ['admin', 'user'];
+
   action1() {
     click$.next('click event');
   }
   action2() {
-
-    click$.next('click event 2');
+    // click$.next('click event 2');
+    this.roles = ['admin'];
   }
 
 }

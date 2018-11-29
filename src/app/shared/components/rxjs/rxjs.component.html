@@ -2,3 +2,12 @@
   <button (click)="action1()">action 1</button>
   <button (click)="action2()">action 2</button>
 </p>
+
+
+<p>
+  USER: <button *appHasRole="['user']">user frnt</button><br>
+  ADMIN: <button *appHasRole="['admin']">admin back</button><br>
+  ANY: <button *appHasRole="['admin', 'user']">admin back</button><br>
+
+  ANY: <button *appHasRole="roles" appRole="'user'">admin back</button><br>
+</p>
