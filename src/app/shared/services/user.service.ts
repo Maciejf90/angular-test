@@ -55,7 +55,7 @@ export class UserService {
       //   return time >= 0 ? time : 0;
       // })
     ).subscribe(time => {
-      console.log('time', time);
+      // console.log('time', time);
       if (time === 0) {
         this.logout().subscribe();
       }

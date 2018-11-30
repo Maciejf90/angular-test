@@ -84,7 +84,7 @@ const data$ = click$.pipe(
   debounceTime(1000),
   delay(300),
   // distinctUntilChanged(),
-  switchMap((n) => {action2
+  switchMap((n) => {
     console.log('n', n);
     return messages$;
   }),

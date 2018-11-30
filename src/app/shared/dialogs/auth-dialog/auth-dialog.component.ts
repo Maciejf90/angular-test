@@ -44,5 +44,3 @@ export class AuthDialogComponent implements OnInit {
     console.log('data', this.loginForm.valid, this.loginForm.value);
   }
 }
-
-}
