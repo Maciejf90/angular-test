@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { Coords } from 'src/app/models';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {State} from '../../../store/reducers/videos.reducer';
+import {UpdateCreditsAction} from '../../../store/actions/videos.actions';
 
 @Component({
   selector: 'app-home',
@@ -23,8 +27,9 @@ export class HomeComponent implements OnInit {
     text: 'title',
     id: 3434
   };
+  credits$: Observable<string> = this.store.select('videos', 'credits');
 
-  constructor() { }
+  constructor(public store: Store<State>) { }
 
   ngOnInit() {
 
@@ -33,6 +38,11 @@ export class HomeComponent implements OnInit {
     // setInterval(() => {
     //   this.title = Date.now();
     // }, 1000);
+  }
+  updateCredits() {
+    this.store.dispatch(
+      new UpdateCreditsAction('New credits' + Date.now())
+    );
   }
 
   onDivClick() {

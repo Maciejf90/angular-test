@@ -143,5 +143,8 @@
       }
     }
   },
-  "defaultProject": "angular-pwc"
+  "defaultProject": "angular-pwc",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

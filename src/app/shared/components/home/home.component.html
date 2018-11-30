@@ -39,3 +39,8 @@
 <!-- <app-map [coords]="coords" (mapClick)="onMapClick($event)"></app-map> -->
 
 <!-- <app-map [coords]="coords2" (mapClick)="coords2 = $event" ></app-map> -->
+
+
+<p (click)="updateCredits()">
+  credits to; {{credits$ | async}}
+</p>
