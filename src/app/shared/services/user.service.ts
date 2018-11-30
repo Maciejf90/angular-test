@@ -78,7 +78,7 @@ export class UserService {
   }
 
   onRequest(req) {
-    console.log('HTTP REQ', req);
+    // console.log('HTTP REQ', req);
     this.onRequest$.next();
   }
 
@@ -93,7 +93,7 @@ export class UserService {
   }
 
   login(username: string, password: string): Observable<User> {
-    console.log('up', username, password);
+    // console.log('up', username, password);
     // FIX - tylko do celow demonstracyjnych i mockowych
     return this.http.get<User[]>(this.baseUrl + '/users', {
       params: {
