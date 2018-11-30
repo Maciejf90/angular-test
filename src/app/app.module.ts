@@ -15,6 +15,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromVideos from './store/reducers/videos.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { VideosEffects } from './store/effects/videos.effects';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { VideosEffects } from './store/effects/videos.effects';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forFeature('videos', fromVideos.reducer),
-    EffectsModule.forRoot([VideosEffects])
+    EffectsModule.forRoot([VideosEffects]),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: YOUTUBE_API_KEY,
