@@ -1,6 +1,6 @@
 <form class="form-inline" (ngSubmit)="onSearch()" #searchForm="ngForm">
   <div class="form-group mx-sm-3">
-    <input [ngModel]="query" (ngModelChange)="query = $event" required name="query" type="text" class="form-control"
+    <input [ngModel]="query$ | async" (ngModelChange)="query = $event" required name="query" type="text" class="form-control"
       placeholder="Szukaj na youtube">
   </div>
   <button type="submit" class="btn btn-primary" [disabled]="!searchForm.form.valid">Szukaj</button>
