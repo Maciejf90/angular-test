@@ -25,4 +25,7 @@ export class SongComponent implements OnInit {
     );
   }
 
+  onCancel() {
+    console.log('PARENT CANCEL HANDLER');
+  }
 }

@@ -1,6 +1,5 @@
 
 
-
 <ng-container *ngIf="song$ | async as song">
   <h3>{{song.title}}</h3>
   <p>
@@ -9,7 +8,7 @@
     details: <a [href]="song.webUrl" target="_blank">www</a>
   </p>
 
-  <!-- <app-song-form [song]="song" (save)="onSongSave($event)" (cancel)="onSongCancel()"></app-song-form> -->
+  <app-song-form [song]="song" (save)="onSave($event)" (cancel)="onCancel()"></app-song-form>
 
 </ng-container>
 
