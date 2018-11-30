@@ -1,9 +1,13 @@
 <ng-container *ngIf="!isEdit">
+  <ng-container *ngIf="artist$ | async as artist">
 
-  <button class="btn btn-primary" (click)="isEdit = true">edit</button>
-  <pre>
-  {{artist$ | async | json}}
-  </pre>
+    <!-- <app-artist-profile [artist]="artist"></app-artist-profile> -->
+
+    <button class="btn btn-primary" (click)="isEdit = true">edit</button>
+    <h2>{{artist.name}}</h2>
+    <img [src]="artist.img | imageUrl" />
+
+  </ng-container>
 </ng-container>
 
 <ng-container *ngIf="isEdit">
@@ -29,6 +33,10 @@
 
 </ng-container>
 
-<!-- <div *ngFor="let artist of artists$ | async">
-    <a [routerLink]="['view', artist.id]" routerLinkActive="active">{{artist.name}}</a>
-</div> -->
+<h3>Songs:</h3>
+
+<div *ngFor="let song of songs$ | async">
+  <a [routerLink]="['song', song.id]" routerLinkActive="active">{{song.title}}</a>
+</div>
+
+<router-outlet></router-outlet>

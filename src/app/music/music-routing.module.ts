@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArtistComponent } from './artist/artist.component';
 import { ArtistViewComponent } from './artist-view/artist-view.component';
 import { ArtistEditComponent } from './artist-edit/artist-edit.component';
+import { SongComponent } from './song/song.component';
 
 const routes: Routes = [{
   path: '',
@@ -12,7 +13,13 @@ const routes: Routes = [{
   component: ArtistComponent,
   children: [{
     path: 'view/:id',
-    component: ArtistViewComponent
+    component: ArtistViewComponent,
+    children: [
+      {
+        path: 'song/:id',
+        component: SongComponent
+      }
+    ]
   }, {
     path: 'edit/:id',
     component: ArtistEditComponent

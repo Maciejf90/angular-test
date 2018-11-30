@@ -46,6 +46,7 @@ import { ErrorComponent } from './error/error.component';
     HighlightDirective,
     UnlessDirective,
     AuthDialogComponent,
+    ImageUrlPipe,
 
     MatDialogModule,
     ReactiveFormsModule,

@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from 'src/app/shared/tokens';
-import { Artist } from 'src/app/models';
+import { Artist, Song } from 'src/app/models';
 import { Observable, Subject, of } from 'rxjs';
 import { merge } from 'rxjs';
 import { tap, startWith, switchMap, share } from 'rxjs/operators';
@@ -44,6 +44,25 @@ export class ArtistService {
       of(1)
     ).pipe(
       switchMap(() => this.http.get<Artist>(this.baseUrl + '/artists/' + id))
+    );
+    // return this.http.get<Artist>(this.baseUrl + '/artists/' + id);
+  }
+
+  getSong(id): Observable<Song> {
+    return this.http.get<Song>(this.baseUrl + '/songs/' + id + '?_expand=artist2 ');
+  }
+
+  getSongs(artistId): Observable<Song[]> {
+
+    return merge(
+      this.reload$,
+      of(1)
+    ).pipe(
+      switchMap(() => this.http.get<Song[]>(this.baseUrl + '/songs', {
+        params: {
+          artistId
+        }
+      }))
     );
     // return this.http.get<Artist>(this.baseUrl + '/artists/' + id);
   }

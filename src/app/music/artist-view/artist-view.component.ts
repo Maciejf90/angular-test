@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Artist } from 'src/app/models';
+import { Artist, Song } from 'src/app/models';
 import { Observable, Subject } from 'rxjs';
 import { map, switchMap, distinctUntilChanged, delay, tap, takeUntil } from 'rxjs/operators';
 import { ArtistService } from '../services/artist.service';
@@ -16,7 +16,7 @@ export class ArtistViewComponent implements OnInit, OnDestroy {
   isEdit = false;
 
   public artist$: Observable<Artist>;
-  public artists$: Observable<Artist[]>;
+  public songs$: Observable<Song[]>;
 
   destroy$ = new Subject();
   artistForm: FormGroup;
@@ -28,7 +28,6 @@ export class ArtistViewComponent implements OnInit, OnDestroy {
 
     // this.route.paramMap.subscribe(param => console.log('params', param));
 
-    this.artists$ = this.artistService.getArtists();
 
     this.artist$ = this.route.paramMap.pipe(
 
@@ -39,6 +38,13 @@ export class ArtistViewComponent implements OnInit, OnDestroy {
 
       tap(artist => this.artistForm.patchValue(artist))
 
+    );
+
+    this.songs$ = this.route.paramMap.pipe(
+      map(paramsMap => paramsMap.get('id')),
+      switchMap((id) => {
+        return this.artistService.getSongs(id);
+      })
     );
 
     this.artistForm = new FormGroup({
